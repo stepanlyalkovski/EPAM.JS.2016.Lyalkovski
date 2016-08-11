@@ -1,0 +1,59 @@
+.container {
+	margin: 50px auto;
+    max-width: 1200px;
+    padding: 10px;
+	background-color: lightgray;
+	text-align: right;
+}
+
+.main-screen {
+    width: 1000px;
+    height: 400px;
+    margin: auto;
+}
+
+.control-panel {
+	margin-bottom: 20px;
+}
+
+.resource-bar,
+.playground {
+	float: left;
+	height: 100%;
+}
+
+.playground {
+	position: relative;
+	width: 700px;
+	background-color: lightblue;
+}
+
+.btn-control {
+	border: 1px solid lightblue;
+	padding: 4px 20px;
+	font-weight: bold;
+}
+
+.btn-control:hover {
+    box-shadow: 0 0 11px 0px lightblue;
+}
+
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.resource-bar {
+	width: 150px;
+	background-color: #77B5C9;
+}
+
+.resource-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 0;
+}
