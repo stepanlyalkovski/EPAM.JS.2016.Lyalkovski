@@ -1,19 +1,17 @@
-function printArray(array) {
-    for(var i = 0; i < array.length; i++){
-        var element = array[i];
+function printArray() {
+    for(var i = 0; i < data.length; i++){
+        var element = data[i];
         var message = "";
 
         if(element === undefined){
-            message = "element is not defined";
+            console.log("element is not defined");
         }
         else if(element == null){
-            message = "element is null";
+            console.log("element is null");
         }
         else {
-            message = "data[" + i + "]=" + element;
+            console.log("data[%d]=%s", i, element);
         }
-        console.log(message);
+
     }
 }
-
-printArray(data);

@@ -1,17 +1,23 @@
-function modifyArray(array){
-    for(var i = 0; i < array.length; i++){
-        if(!isNaN(array[i]) && array[i] != null){
-            if(array[i] == 0) {
-                array[i] = +array[i] + 10;
-            }
-            else if(array[i] > 100){
-                array[i] -= 100;
-            }
-            else {
-                array[i] = +array[i] + 100;
-            }
+for(var i = 0; i < data.length; i++){
+    if(data[i]){
+        if(data[i] > 100){
+            data[i] -= 100;
+        } else {
+            data[i] = +data[i] + 100;
         }
+    } else if(data[i] === 0){
+            data[i] += 10;
+        }
+}
+
+printArray();
+
+/*test function */
+function check(arg){
+    if(arg){
+        return "if - true";
+    } else {
+        return "if - false";
     }
 }
 
-modifyArray(data);
