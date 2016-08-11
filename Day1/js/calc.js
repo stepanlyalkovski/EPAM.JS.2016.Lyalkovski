@@ -12,12 +12,3 @@ for(var i = 0; i < data.length; i++){
 
 printArray();
 
-/*test function */
-function check(arg){
-    if(arg){
-        return "if - true";
-    } else {
-        return "if - false";
-    }
-}
-
