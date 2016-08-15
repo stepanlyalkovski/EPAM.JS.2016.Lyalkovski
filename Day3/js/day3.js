@@ -20,7 +20,8 @@ $(function() {
         var $table = $("#task-table");
         $("#btn-reset").prop("disabled", false);
         if (!isEmpty($table)) return;
-        var blockCount = random(30, 50);
+        var blockLimit = 100;
+        var blockCount = random(50, blockLimit);
         for (var i = 0; i < blockCount; i++) {
             var number = random(1, 100);
             var $block = $("<div class='block'></div>").text(number);

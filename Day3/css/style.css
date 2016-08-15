@@ -60,5 +60,16 @@
 .btn-control {
     width: 100%;
     display: block;
+    padding: 5px;
     margin-bottom: 10px;
+    border: 1px solid lightgray;
+}
+
+.btn-control:hover{
+    cursor: pointer;
+}
+
+.btn-control:hover[disabled] {
+    cursor: default;
+
 }
