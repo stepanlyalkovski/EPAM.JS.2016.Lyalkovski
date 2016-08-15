@@ -17,12 +17,12 @@
 }
 
 .resource-bar,
-.playground {
+#playground {
 	float: left;
 	height: 100%;
 }
 
-.playground {
+#playground {
 	position: relative;
 	width: 700px;
 	background-color: lightblue;
@@ -56,4 +56,9 @@
     opacity: 1;
     cursor: pointer;
     font-size: 0;
+}
+
+.resource-counter {
+	text-align: center;
+	padding: 20px;
 }
