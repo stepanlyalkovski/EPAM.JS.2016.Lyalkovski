@@ -33,7 +33,7 @@ $(function() {
     $("#btn-color").click(function () {
         $(".block").each(function () {
             var btnClass = "";
-            var $block = $(this)
+            var $block = $(this);
             var number = $block.text();
 
             if (!isNaN(number)) {
