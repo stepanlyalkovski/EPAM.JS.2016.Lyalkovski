@@ -1,0 +1,64 @@
+.container {
+    width: 900px;
+    margin: 50px auto;
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.control,
+#task-table {
+    float: left;
+}
+
+.control {
+    width: 100px;
+
+}
+
+#task-table {
+    width: 600px;
+    min-height: 400px;
+    margin-right: 58px;
+    border: 1px solid black;
+
+    font-size: 0;
+}
+
+.block {
+    width: 44px;
+    height: 28px;
+    display: inline-block;
+    padding: 10px 2px;
+    border: 1px solid gray;
+    font-size: 14px;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+.block-red,
+.block-orange,
+.block-green {
+    border-color: white;
+}
+
+.block-red {
+    background-color: #f44336;
+}
+
+.block-green {
+    background-color: #4caf50;
+}
+
+.block-orange {
+    background-color: #ff9800;
+}
+
+.btn-control {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
