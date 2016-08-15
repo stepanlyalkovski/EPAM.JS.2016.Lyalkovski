@@ -7,10 +7,21 @@ function isEmpty( el ){
 }
 
 function setDisableState (gen, color, reset) {
-    $("#btn-gen").prop("disabled", gen);
-    $("#btn-reset").prop("disabled", color);
-    $("#btn-color").prop("disabled", reset);
+
+    setButtonState("#btn-gen", gen);
+    setButtonState("#btn-color", color);
+    setButtonState("#btn-reset", reset);
 }
+
+function setButtonState(elementId, isDisabled) {
+    if(isDisabled){
+        $(elementId).addClass("btn-disabled");
+    }
+    else {
+        $(elementId).removeClass("btn-disabled");
+    }
+}
+
 
 $(function() {
 
@@ -47,7 +58,7 @@ $(function() {
                 $block.addClass(btnClass);
             }
         });
-        setDisableState(true, false, true);
+        setDisableState(true, true, false);
     });
 
     $("#btn-reset").click(function () {

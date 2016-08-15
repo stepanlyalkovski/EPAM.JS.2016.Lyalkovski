@@ -69,7 +69,11 @@
     cursor: pointer;
 }
 
-.btn-control:hover[disabled] {
-    cursor: default;
+.btn-disabled {
+    background-color: gray;
+    color: maroon;
+}
 
+.btn-disabled:hover {
+    cursor: default;
 }
