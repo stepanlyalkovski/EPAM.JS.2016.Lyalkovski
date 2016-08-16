@@ -25,7 +25,7 @@
 #playground {
 	position: relative;
 	width: 700px;
-	background-color: lightblue;
+	background-color: darkgrey;
 }
 
 .btn-control {
@@ -46,7 +46,7 @@
 
 .resource-bar {
 	width: 150px;
-	background-color: #77B5C9;
+	background-color: gainsboro;
 }
 
 .resource-item {
@@ -61,4 +61,40 @@
 .resource-counter {
 	text-align: center;
 	padding: 20px;
+}
+
+.btn-control-start {
+	background-color: green;
+}
+
+.btn-control-stop {
+	background-color: red;
+}
+
+.bomb {
+	position: absolute;
+	display: inline-block;
+}
+
+.game-overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,0,0, 0.5);
+}
+
+.game-overlay-active {
+
+	display: block;
+}
+
+.counter-points-added {
+	background-color: green;
+}
+
+.counter-points-removed {
+	background-color: red;
 }
