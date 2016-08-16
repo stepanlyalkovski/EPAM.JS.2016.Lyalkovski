@@ -22,7 +22,7 @@ function CreateResource() {
     var $playground = $("#playground");
     var resourceIndex = Math.floor(getRandomArbitrary(0, game.resources.data.length));
     var $element = $("<div class='resource-item'> <img src =' "+ game.resources.data[resourceIndex].imageUrl + "'</img></div>");
-    $element.css("display", "none");
+    $element.hide();
     $element.data("resource-type", game.resources.data[resourceIndex].type);
     $element.click(PickResource);
     GeneratePosition($element);
@@ -41,11 +41,8 @@ function CreateBomb() {
     GeneratePosition($bomb);
     $playground.append($bomb);
     $bomb.fadeIn(game.bomb.duration, function() {
-        var $overlay;
-        if (!game.isStopped) {
-            game.removePoints(10);
-            $bomb.remove();
-        }
+        game.removePoints(10);
+        $bomb.remove();
     });
 }
 
@@ -59,7 +56,7 @@ game.resources = {
         { type: "pumpkin", count: 0, imageUrl: "img/pumpkin.png"}
     ],
     interval: 500,
-    duration: 2000
+    duration: 700
 };
 game.isStopped = true;
 game.bomb = { interval: 5000, duration: 2000, pointHarm : 10, imageUrl: "img/bomb.png"}
@@ -68,6 +65,8 @@ game.changeState = function () {
     var color;
     var text;
     if(this.isStopped){
+        $(".resource-item").resume();
+        $(".bomb").resume();
         this.resourceTimeId = setInterval(CreateResource, game.resources.interval);
         this.bombTimeId = setInterval(CreateBomb, game.bomb.interval);
         color = "red";
@@ -75,7 +74,8 @@ game.changeState = function () {
         this.$controlBtn.addClass("btn-control-stop");
         this.$controlBtn.removeClass("btn-control-start");
     } else {
-        $(".resource-item").stop();
+        $(".resource-item").pause();
+        $(".bomb").pause();
         clearTimeout(this.resourceTimeId);
         clearTimeout(this.bombTimeId);
 
