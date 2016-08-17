@@ -10,7 +10,7 @@ function GeneratePosition($element) {
 function PickResource() {
     if(game.isStopped) return;
     var $element = $(this);
-    console.log($element.data("resource-type"));
+
     game.addPoint($element.data("resource-type"));
     $element.stop();
     $element.animate({top: "-200px"}, 400, function() {
@@ -21,7 +21,11 @@ function PickResource() {
 function CreateResource() {
     var $playground = $("#playground");
     var resourceIndex = Math.floor(getRandomArbitrary(0, game.resources.data.length));
-    var $element = $("<div class='resource-item'> <img src =' "+ game.resources.data[resourceIndex].imageUrl + "'</img></div>");
+    /* set image url path */
+    var $element = $("<div class='resource-item'> <img src =' "
+                     + game.resources.data[resourceIndex].imageUrl
+                     + "'</img></div>");
+
     $element.hide();
     $element.data("resource-type", game.resources.data[resourceIndex].type);
     $element.click(PickResource);
@@ -37,6 +41,7 @@ function CreateBomb() {
     var $playground = $("#playground");
     var resourceIndex = Math.floor(getRandomArbitrary(0, game.resources.data.length));
     var $bomb = $("<div class='bomb'> <img src =' "+ game.bomb.imageUrl + "'</img></div>");
+
     $bomb.css("display", "none");
     GeneratePosition($bomb);
     $playground.append($bomb);
@@ -64,6 +69,7 @@ game.bomb = { interval: 5000, duration: 2000, pointHarm : 10, imageUrl: "img/bom
 game.changeState = function () {
     var color;
     var text;
+
     if(this.isStopped){
         $(".resource-item").resume();
         $(".bomb").resume();
@@ -93,7 +99,6 @@ game.addPoint = function(resourceType) {
     for(var i = 0; i < this.resources.data.length; i++) {
         if(this.resources.data[i].type == resourceType) {
             this.resources.data[i].count++;
-
             var $counter = $(".resource-counter[data-counter-type='" + this.resources.data[i].type + "']");
             $counter.find(".resource-counter-value").text(this.resources.data[i].count);
             $counter.addClass("counter-points-added");
@@ -116,10 +121,10 @@ game.removePoints = function() {
     }
     var counterValue = randomResource.count || "-";
 
+    /* find resource counter of current type and update value */
     var $counter = $(".resource-counter[data-counter-type='" + randomResource.type + "']");
     $counter.find(".resource-counter-value").text(counterValue);
 
-    var backgroundColor = $counter.css("background-color");
     $counter.addClass("counter-points-removed");
     setTimeout(function() {
         $counter.removeClass("counter-points-removed");
@@ -127,10 +132,12 @@ game.removePoints = function() {
 };
 
 /* demo version: pretend that we know there are two columns with two enable positions */
+/* create resource counters. Counter types depend on resources in game.resources.data */
 game.initialize = function InitializeCounterWidgets() {
     var $resourceContainer = $(".resource-bar");
     var itemPerColumn = 2;
     var resources = this.resources.data;
+
     for(var i = 0; i < resources.length; i++) {
         /* temp demo */
         var $container;
@@ -152,7 +159,7 @@ game.initialize = function InitializeCounterWidgets() {
         this.$controlBtn.text("Start");
     }
 };
-/*
+/* elements that creates code above:
  <div class="resource-counter">
  <div class="resource-counter-image">
  <img src="img/cheese.png" alt="cheese">
