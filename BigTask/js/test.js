@@ -46,7 +46,7 @@ function CreateBomb() {
     GeneratePosition($bomb);
     $playground.append($bomb);
     $bomb.fadeIn(game.bomb.duration, function() {
-        game.removePoints(10);
+        game.removePoints(game.bomb.pointHarm);
         $bomb.remove();
     });
 }
@@ -64,7 +64,16 @@ game.resources = {
     duration: 700
 };
 game.isStopped = true;
-game.bomb = { interval: 5000, duration: 2000, pointHarm : 10, imageUrl: "img/bomb.png"}
+game.bomb = { interval: 5000, duration: 2000, pointHarm : 10, imageUrl: "img/bomb.png"};
+/*
+game.modes = ["normal", "hero"];
+game.currentMode = game.modes[0];
+ game.heroMode = false;
+ game.toggleMode = function() {
+ game.resources.interval = 50;
+ game.resources.duration = 10000;
+ };
+*/
 
 game.changeState = function () {
     var color;
@@ -75,7 +84,7 @@ game.changeState = function () {
         $(".bomb").resume();
         this.resourceTimeId = setInterval(CreateResource, game.resources.interval);
         this.bombTimeId = setInterval(CreateBomb, game.bomb.interval);
-        color = "red";
+        //this.modeTimeId = setInterval(game.toggleMode, 5000);
         text = "Stop";
         this.$controlBtn.addClass("btn-control-stop");
         this.$controlBtn.removeClass("btn-control-start");
@@ -84,14 +93,11 @@ game.changeState = function () {
         $(".bomb").pause();
         clearTimeout(this.resourceTimeId);
         clearTimeout(this.bombTimeId);
-
-        color = "green";
         text = "Start";
         this.$controlBtn.removeClass("btn-control-stop");
         this.$controlBtn.addClass("btn-control-start");
     }
     this.isStopped = !game.isStopped; // change state
-
     this.$controlBtn.text(text);
 };
 
@@ -124,7 +130,6 @@ game.removePoints = function() {
     /* find resource counter of current type and update value */
     var $counter = $(".resource-counter[data-counter-type='" + randomResource.type + "']");
     $counter.find(".resource-counter-value").text(counterValue);
-
     $counter.addClass("counter-points-removed");
     setTimeout(function() {
         $counter.removeClass("counter-points-removed");
@@ -152,7 +157,6 @@ game.initialize = function InitializeCounterWidgets() {
                         .append($resourceImage)
                         .append("<div class='resource-counter-value'>-</div>");
         $container.append($counter);
-
         this.$controlBtn = $("#btn-control");
         this.$controlBtn.removeClass("btn-control-stop");
         this.$controlBtn.addClass("btn-control-start");
