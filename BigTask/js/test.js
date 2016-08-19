@@ -61,7 +61,7 @@ game.resources = {
         { type: "pumpkin", count: 0, imageUrl: "img/pumpkin.png"}
     ],
     interval: 500,
-    duration: 700
+    duration: 2000
 };
 game.isStopped = true;
 game.bomb = { interval: 5000, duration: 2000, pointHarm : 10, imageUrl: "img/bomb.png"};
