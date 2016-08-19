@@ -13,8 +13,9 @@ core.control.endPoint = 860;
 core.control.createZombie = function() {
     var randIndex = random(0, unit.zombie.types.length);
     var randomLine = random(0,5);
+    var $randomLine = $(".field-line").eq(randomLine);
     var type = unit.zombie.types[randIndex];
-    var settings = {position: 0, line: randomLine, endPoint: core.control.endPoint};
+    var settings = {position: 0, $line: $randomLine, endPoint: core.control.endPoint};
     var Zombie = unit.zombie[type];
     var zombie = new Zombie(settings);
 

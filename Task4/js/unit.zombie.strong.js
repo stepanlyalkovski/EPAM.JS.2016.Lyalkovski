@@ -1,4 +1,4 @@
 unit.zombie.Strong = function(settings) {
-    Zombie.call(this, settings);
-    this._$zombie.addClass("strong");
+    var base = Zombie.call(this, settings);
+    base._$zombie.addClass("strong");
 };

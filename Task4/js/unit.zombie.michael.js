@@ -1,4 +1,4 @@
 unit.zombie.Michael = function(settings) {
-    Zombie.call(this, settings);
-    this._$zombie.addClass("michael");
+    var base = Zombie.call(this, settings);
+    base._$zombie.addClass("michael");
 };

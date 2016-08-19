@@ -1,36 +1,33 @@
 function Zombie(settings) {
-    this._position = settings.position;
-    this._endPoint = settings.endPoint;
-    this._$zombie = $("<div class='zombie'></div>");
-    this._$zombie.css('right', this._position);
-    this.line = settings.line;
-
-    this.speed = 1;
-    this.hitPoints = 100;
+    var zombie = {};
+    zombie._position = settings.position;
+    zombie._endPoint = settings.endPoint;
+    zombie.$line = settings.$line;
+    zombie._$zombie = $("<div class='zombie'></div>");
+    zombie._$zombie.css('right', this._position);
+    zombie.speed = 1;
+    zombie.hitPoints = 100;
 
     /* Send messages to core */
     this.subscribe = function(func) {
-        this.notify = func;
+        zombie.notify = func;
     };
 
-    $(".field-line").eq(this.line).append(this._$zombie);
-
     this.move = function() {
-        this._position += this.speed;
-        if(this._position < this._endPoint) {
-            this._$zombie.css('right', this._position);
+        zombie._position += zombie.speed;
+        if(zombie._position < zombie._endPoint) {
+            zombie._$zombie.css('right', zombie._position);
         } else {
             /* send message to core that zombie has reached the end of a field */
-            this.notify();
+            zombie.notify();
         }
     };
 
     this.die = function() {
-        this._$zombie.remove();
+        zombie._$zombie.remove();
     };
 
+    zombie.$line.append(zombie._$zombie);
 
-
-
-
+    return zombie;
 }
