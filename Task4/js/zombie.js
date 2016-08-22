@@ -4,7 +4,7 @@ function Zombie(settings) {
     zombie.endPoint = settings.endPoint;
     zombie.$line = settings.$line;
     zombie.$zombie = $("<div class='zombie'></div>");
-    zombie.$zombie.css('right', this.position);
+    zombie.$zombie.css('right', zombie.position);
     zombie.speed = 1;
     zombie.hitPoints = 100;
 
